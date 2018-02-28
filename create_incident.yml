@@ -1,0 +1,18 @@
+- name: Create an incident on Statuspage
+
+  gather_facts: false
+
+  vars_files:
+    - roles/statuspage/vars/main.yml
+
+  vars:
+    incident_name: Primary database failing
+    incident_status: identified
+    incident_update_twitter: false
+    incident_body: Woah, the databases are lagging behind!
+
+  hosts:
+  - localhost
+
+  tasks:
+  - import_tasks: roles/statuspage/tasks/createIncident.yml

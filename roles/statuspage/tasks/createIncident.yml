@@ -1,0 +1,21 @@
+- name: Create Incident
+  uri:
+    url: "{{ statuspage_endpoint }}"
+    method: POST
+
+    headers:
+      Authorization: "Authorization: OAuth {{ authorization_oauth }}"
+
+    body: "\
+      incident[name]={{ incident_name }}&\
+      incident[status]={{ incident_status }}&\
+      incident[wants_twitter_update]={{ incident_update_twitter }}&\"
+      incident[body]={{ incident_body}}"
+
+    status_code: 201
+    return_content: yes
+
+  register: incident_response
+
+- debug:
+    msg: "Incident ID: {{ incident_response.json.id }}"

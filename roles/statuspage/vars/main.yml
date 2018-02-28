@@ -1,0 +1,3 @@
+statuspage_endpoint: https://api.statuspage.io/v1/pages/PAGE_ID_HERE/incidents.json
+
+authorization_oauth: API_KEY_HERE
